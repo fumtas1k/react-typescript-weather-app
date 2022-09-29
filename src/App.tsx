@@ -22,12 +22,26 @@ function App() {
     conditionText: "",
     icon: "",
   });
+  const [hasCityError, setHasCityError] = useState<boolean>(false);
 
   const baseUrl = process.env.REACT_APP_WEATHER_API_URL;
   const apiKey = process.env.REACT_APP_WEATHER_API_KEY;
 
   const getWeather = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    if (city.trim() === "") {
+      setHasCityError(true);
+      setResults({
+        country: "",
+        cityName: "",
+        temperature: "",
+        conditionText: "",
+        icon: "",
+      });
+      return;
+    };
+    setHasCityError(false);
     
     const url = `${baseUrl}v1/current.json?key=${apiKey}&q=${city}&aqi=no`;
     fetch(url)
@@ -49,7 +63,8 @@ function App() {
         <Title />
         <Form 
           setCity={setCity}
-          getWeather={getWeather}        
+          getWeather={getWeather}
+          hasCityError={hasCityError}
         />
         <Results results={results}/>
       </div>

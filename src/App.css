@@ -56,7 +56,7 @@ input[type="text"] {
     color: #fff !important;
     font-weight: lighter;
     letter-spacing: 2px;
-    margin-bottom: 30px;
+    
     margin-right: 20px;
     font-size: 20px;
 }
@@ -80,6 +80,11 @@ button:hover {
 
 *:focus {
     outline: none;
+}
+
+.block {
+    display: block;
+    margin-bottom: 30px;
 }
 
 /* Results.js */
@@ -107,6 +112,10 @@ button:hover {
     align-items: center;
     justify-content: center;
     font-size: 2.5rem;
+}
+
+.pt-20 {
+    padding-top: 20px;
 }
 
 /* Loading.js */
